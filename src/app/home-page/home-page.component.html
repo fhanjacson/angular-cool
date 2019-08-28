@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="columns" *ngIf="ipStackInfo">
+        <div class="column">
+            <div class="notification">
+                <h2 class="title">Summary <img height="30px" width="30px"
+                        src="{{ ipStackInfo.location.country_flag }}" /></h2>
+                <p>IP Address: {{ ipStackInfo.ip }}</p>
+                <p>Country: {{ ipStackInfo.country_name }}</p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="notification">
+                <h2 class="title">Location</h2>
+                <p>Latitude: {{ ipStackInfo.latitude }}</p>
+                <p>Longitude: {{ ipStackInfo.longitude }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification media" *ngIf="fortune">
+            <div class="media-content">
+                <p class="title">Weather Info <img height="64px" width="64px" src="{{ weatherInfo.current.condition.icon }}" /></p>
+                <p>Current Weather: {{ weatherInfo.current.condition.text }}</p>
+            </div>
+            <div class="media-right">
+                <button class="button is-primary" title="Refresh Fortune" (click)="getCurrentWeather($event)">Refresh</button>
+            </div>
+        </div>
+
+    <div class="notification media" *ngIf="fortune">
+            <div class="media-content">
+                <p class="title">Cat Fact</p>
+                <p>{{ catFact.text }}</p>
+            </div>
+            <div class="media-right">
+                <button class="button is-primary" title="Refresh Fortune" (click)="getCatFact($event)">Refresh</button>
+            </div>
+        </div>
+
+    <div class="notification media" *ngIf="fortune">
+        <div class="media-content">
+            <p class="title">Fortune</p>
+            <p>{{ fortune.fortune }}</p>
+        </div>
+        <div class="media-right">
+            <button class="button is-primary" title="Refresh Fortune" (click)="getFortune($event)">Refresh</button>
+        </div>
+    </div>
+
+    <div class="notification media" *ngIf="pokemon">
+        <div class="media-content">
+            <p class="title">Pokemon: {{ pokemon.name | uppercase }} (No. {{ pokemon.id }})</p>
+            <p><img height="96px" width="96px" src="{{ pokemon.sprites.front_default }}" /></p>
+            <p>Pokemon Height: {{ pokemon.height / 10 }} m</p>
+            <p>Pokemon Weight: {{ pokemon.weight / 10 }} kg</p>
+        </div>
+        <div class="media-right">
+            <button class="button is-primary" title="Refresh Pokemon"
+                (click)="getPokemonRandom($event)">Refresh</button>
+        </div>
+
+    </div>
+
+
+    <!-- 
+    <br />
+    <p>{{ ipStackInfo | json }}</p>
+    <br />
+    <p>{{ catFact | json }}</p>
+    <br />
+    <p>{{ weatherInfo | json }}</p>
+    <br />
+    <p>{{ fortune | json }}</p>
+    <br /> -->
+    <!-- <p>{{ pokemon | json }}</p> -->
+
+</div>
